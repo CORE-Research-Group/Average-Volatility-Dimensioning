@@ -127,6 +127,9 @@ def Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size
         clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
         models, predictions = clf.fit(X_train, X_test, y_train, y_test)
 
+        # Print the classification results
+        print(models)
+        
         # Save the classification results
         save_path = os.path.join(save_dir, f'Classification_Result_{metric}.csv')
         models.to_csv(save_path)
@@ -143,7 +146,7 @@ def Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size
 Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size = 10, w_incre = 1)
 
 
-# # Our choice of parameters:
+# # Parameters used in the experiments of the paper:
 # # Movement dataset
 # Classification_with_AVD_Feature(dataset = "Movement", metric = "MAD", w_size = 10, w_incre = 1)
 # Classification_with_AVD_Feature(dataset = "Movement", metric = "SD", w_size = 10, w_incre = 1)
