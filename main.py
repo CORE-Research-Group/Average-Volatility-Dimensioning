@@ -3,7 +3,6 @@ import pandas as pd
 import os
 import time
 from AVD_function import calculate_AVD_feature
-from AVD_function_optimized import calculate_AVD_feature_optimized
 from lazypredict.Supervised import LazyClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -46,7 +45,7 @@ def Classification_with_AVD_Feature(dataset = "Hydraulic", metric = "MAD", w_siz
         cycle_data = normalized_cycles_data.loc[cyc]
 
         # Calculate AVD feature for the cycle
-        avd_for_cycle = calculate_AVD_feature_optimized(pd.DataFrame(cycle_data), metric = metric, w_size=w_size, w_incre=w_incre)
+        avd_for_cycle = calculate_AVD_feature(pd.DataFrame(cycle_data), metric = metric, w_size=w_size, w_incre=w_incre)
 
         # Append the AVD value for each time point to the results list
         for time_point, row in avd_for_cycle.iterrows():
